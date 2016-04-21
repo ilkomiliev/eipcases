@@ -37,7 +37,7 @@ public class AddressBindyJDBCTest extends CamelTestSupport {
         //mockEndpoint.expectedBodiesReceived(createTestAddressEntity());
         mockEndpoint.expectedMessageCount(1);
 
-        Integer numOfRowsBefore = jdbc.queryForObject("select count(*) from APP.ADDRESS", Integer.class);
+        Integer numOfRowsBefore = getNumOfTableRows();
 
         template.sendBody("direct:fromCsv", TESTDATA);
 
@@ -45,7 +45,7 @@ public class AddressBindyJDBCTest extends CamelTestSupport {
 
         int expected = ++numOfRowsBefore;
 
-        int actual = jdbc.queryForObject("select count(*) from APP.ADDRESS", Integer.class);
+        int actual = getNumOfTableRows();
 
         assertEquals(expected, actual);
     }
@@ -109,5 +109,9 @@ public class AddressBindyJDBCTest extends CamelTestSupport {
 
         registry.bind("ds", dataSource);
         return registry;
+    }
+
+    protected Integer getNumOfTableRows() {
+        return jdbc.queryForObject("select count(*) from APP.ADDRESS", Integer.class);
     }
 }

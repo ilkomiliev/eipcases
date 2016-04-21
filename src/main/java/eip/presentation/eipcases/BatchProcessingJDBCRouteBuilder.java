@@ -6,11 +6,11 @@ import org.apache.camel.model.dataformat.BindyType;
 /**
  * Created by ilievi on 21.04.2016.
  */
-public class BatchProcessingRouteBuilder extends RouteBuilder {
+public class BatchProcessingJDBCRouteBuilder extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("file:src/data?charset=utf-8&doneFileName=${file:name}.done&move=.done&moveFailed=.error")
+        from("file:data?charset=utf-8&doneFileName=${file:name}.done&move=.done&moveFailed=.error")
                 .unmarshal()
                 .bindy(BindyType.Csv, AddressCsvEntity.class)
                 .bean(AddressCsvEntityToSqlTransformer.class)
