@@ -9,7 +9,7 @@ public class AddressBindyJPATest extends AddressBindyJDBCTest {
 
     @Override
     public void testUnmarshall() throws Exception {
-        ;
+        Thread.sleep(2000);
     }
 
     @Override

@@ -8,7 +8,7 @@ import javax.persistence.*;
 /**
  * Created by ilievi on 21.04.2016.
  */
-@CsvRecord(crlf = "UNIX", separator = ",", skipFirstLine = true)
+@CsvRecord(separator = ",")
 @Entity
 @Table(name = "ADDRESS")
 public class AddressCsvEntity {
