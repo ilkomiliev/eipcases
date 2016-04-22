@@ -18,7 +18,7 @@ import javax.sql.DataSource;
  */
 public class AddressBindyJDBCTest extends CamelTestSupport {
 
-    static final String TESTDATA = "APLZ,AGKZ,ASTR,ANRV,ANRB,ASTG,ATOP,AORT,APOL\n4040,40101,Jägerstraße,18,,,,Linz,Magistrat Linz";
+    static final String TESTDATA = "4040,40101,Jägerstraße,18,,,,Linz,Magistrat Linz";
 
     private static final String TRANSFORMED_SQL = "insert into APP.ADDRESS(PLZ,GKZ,STR,NRV,NRB,STG,TOP,ORT,POL) values ('4040','40101','Jägerstraße','18',null,null,null,'Linz','Magistrat Linz')";
 

@@ -10,7 +10,8 @@ public class BatchProcessingJDBCRouteBuilder extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("file:data?charset=utf-8&doneFileName=${file:name}.done&move=.done&moveFailed=.error")
+        from("file:src/data?charset=utf-8&doneFileName=${file:name}.done&move=.done&moveFailed=.error")
+                .split(body().tokenize("\n"))
                 .unmarshal()
                 .bindy(BindyType.Csv, AddressCsvEntity.class)
                 .bean(AddressCsvEntityToSqlTransformer.class)
